@@ -1,0 +1,43 @@
+2017-03-13 14:44:19,609 [Worker-11] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: MopsickCCD1:MopsickCCD1:0.1.0-SNAPSHOT @ G:\Code\patient-info-server\MopsickCCD1\pom.xml.
+2017-03-13 14:44:22,245 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:44:22,245 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\MopsickCCD1\src\main\resources
+2017-03-13 14:44:22,245 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\MopsickCCD1\src\main\resources
+2017-03-13 14:44:22,248 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:44:22,248 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\MopsickCCD1\src\test\resources
+2017-03-13 14:44:23,531 [Worker-2] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: MopsickCCD1:MopsickCCD1:0.1.0-SNAPSHOT @ G:\Code\patient-info-server\MopsickCCD1\pom.xml.
+2017-03-13 14:44:24,780 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:44:24,781 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\MopsickCCD1\src\main\resources
+2017-03-13 14:44:24,781 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\MopsickCCD1\src\main\resources
+2017-03-13 14:44:24,783 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:44:24,783 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\MopsickCCD1\src\test\resources
+2017-03-13 14:44:26,883 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:44:26,884 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\MopsickCCD1\src\main\resources
+2017-03-13 14:44:26,884 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\MopsickCCD1\src\main\resources
+2017-03-13 14:44:26,885 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:44:26,886 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\MopsickCCD1\src\test\resources
+2017-03-13 14:44:50,882 [Worker-13] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: MopsickCCD1:MopsickCCD1:0.1.0-SNAPSHOT @ G:\Code\patient-info-server\patient-info-server\pom.xml.
+2017-03-13 14:44:51,585 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:44:51,585 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\patient-info-server\src\main\resources
+2017-03-13 14:44:51,585 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\patient-info-server\src\main\resources
+2017-03-13 14:44:51,587 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:44:51,587 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\patient-info-server\src\test\resources
+2017-03-13 14:44:54,329 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:44:54,329 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\patient-info-server\src\main\resources
+2017-03-13 14:44:54,329 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\patient-info-server\src\main\resources
+2017-03-13 14:44:54,331 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:44:54,332 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\patient-info-server\src\test\resources
+2017-03-13 14:44:59,141 [Worker-7] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2017-03-13 14:44:59,829 [Worker-7] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: MopsickCCD1:MopsickCCD1:0.1.0-SNAPSHOT @ G:\Code\patient-info-server\patient-info-server\pom.xml.
+2017-03-13 14:45:00,619 [Worker-7] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /patient-info-server/src/main/java
+2017-03-13 14:45:00,619 [Worker-7] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /patient-info-server/src/test/java
+2017-03-13 14:45:00,948 [Worker-7] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 1 sec
+2017-03-13 14:45:01,776 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:45:01,776 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\patient-info-server\src\main\resources
+2017-03-13 14:45:01,776 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\patient-info-server\src\main\resources
+2017-03-13 14:45:01,778 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:45:01,778 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\patient-info-server\src\test\resources
+2017-03-13 14:45:14,736 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:45:14,736 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\patient-info-server\src\main\resources
+2017-03-13 14:45:14,737 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\patient-info-server\src\main\resources
+2017-03-13 14:45:14,738 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2017-03-13 14:45:14,739 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\Code\patient-info-server\patient-info-server\src\test\resources
