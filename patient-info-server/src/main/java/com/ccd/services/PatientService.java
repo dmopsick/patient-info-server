@@ -46,13 +46,6 @@ public class PatientService {
         addMultiple(patientArray);
     }
 
-    /** Adds a patient into the repository */
-    public Patient add(Patient bodyPatient) {
-        Patient savedPatient = patientRepository.save(bodyPatient);
-        //logger.info("Flag - saved patient's name " + savedPatient.getFullName());
-        return savedPatient;
-    }
-    
     /** Save multiple patients at once */
     public Patient[] addMultiple(Patient[] patientArray){
         // Create an array to hold saved patients
@@ -65,6 +58,13 @@ public class PatientService {
         
         return savedArray;
     }
+    
+    /** Adds a patient into the repository */
+    public Patient add(Patient bodyPatient) {
+        Patient savedPatient = patientRepository.save(bodyPatient);
+        //logger.info("Flag - saved patient's name " + savedPatient.getFullName());
+        return savedPatient;
+    }
 
     /** Returns a specific patient */
     public Patient read(Long patientId) {
@@ -75,5 +75,16 @@ public class PatientService {
     public List<Patient> readAll() {
         // logger.info("FLAG - readAll() was called");
         return this.patientRepository.findAll();
+    }
+    
+    /** Deletes the patient with the given id from the repository */
+    public void delete(Long patientId){
+        this.patientRepository.delete(patientId);
+    }
+    
+    /** Updates a given patient's diagnosis info */
+    public Patient editDiagnosis(Patient originalPatient, Patient updatedPatient){
+        originalPatient.setDiagnosis(updatedPatient.getDiagnosis());
+        return this.patientRepository.save(originalPatient);
     }
 }
