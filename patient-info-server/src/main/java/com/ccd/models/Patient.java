@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Patient {
 	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String givenName;
 	private String familyName;
@@ -21,8 +21,7 @@ public class Patient {
 	
 	private Patient(){};
 	
-	public Patient(long id, String givenName, String familyName, String diagnosis, String phoneNumber, String insuranceProvider, String insuranceId){
-		this.id = id;
+	public Patient(String givenName, String familyName, String diagnosis, String phoneNumber, String insuranceProvider, String insuranceId){
 		this.givenName = givenName;
 		this.familyName = familyName;
 		this.diagnosis = diagnosis;
@@ -46,7 +45,7 @@ public class Patient {
 	
 	// Using @JsonIgnore to prevent the full name field from being sent in the JSON Object
 	@JsonIgnore
-	/** Combines the given and family name to retrun the full name */
+	/** Combines the given and family name to return the full name */
 	public String getFullName(){
         return givenName + " " + familyName;
     }

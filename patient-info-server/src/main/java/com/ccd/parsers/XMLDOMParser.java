@@ -77,12 +77,7 @@ public class XMLDOMParser {
 	}
 	
 	/** This method parses a single patient from the patient list*/
-	private Patient parsePatient(Element patient){
-		// Parse the id of the patient
-		String idString = patient.getAttribute("id");
-		Long id = Long.parseLong(idString);
-		//System.out.println("Flag " + id);
-		
+	private Patient parsePatient(Element patient){		
 		// Parse the given name of the patient
 		String givenName = patient.getElementsByTagName("givenName").item(0).getTextContent();
 		
@@ -106,7 +101,7 @@ public class XMLDOMParser {
 		String insuranceId = patient.getElementsByTagName("insuranceId").item(0).getTextContent();
 		
 		// Create a patient model
-		Patient patientModel = new Patient(id, givenName, familyName, diagnosis, phoneNumber, insuranceProvider, insuranceId);
+		Patient patientModel = new Patient(givenName, familyName, diagnosis, phoneNumber, insuranceProvider, insuranceId);
 		
 		return patientModel;
 	}

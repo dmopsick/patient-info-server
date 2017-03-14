@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +31,13 @@ public class PatientController {
 	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) {}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	ResponseEntity<Patient> addPatient(@RequestBody Patient bodyPatient){
+	    Patient savedPatient = this.patientService.add(bodyPatient);
+	    
+	    return new ResponseEntity<Patient>(savedPatient, HttpStatus.CREATED);
+	}
 	
 	/** Handles the request for a specific patient */
 	@RequestMapping(method = RequestMethod.GET, value = "/{patientID}")
@@ -55,7 +63,7 @@ public class PatientController {
 	/** Handles the request for displaying all of the patients in the repository */
 	@RequestMapping(method = RequestMethod.GET)
 	ResponseEntity<List<Patient>> readAllPatient(){
-		logger.info("FLAG patient/1 called");
+		// logger.info("FLAG patient/1 called");
 		// Initializes the HTTP status to be returned
 		HttpStatus responseStatus;
 		

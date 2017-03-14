@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -55,6 +57,52 @@ public class PatientControllerTests {
         this.jsonMapper  = new ObjectMapper();
     }
     
+    /** This tests that add calls the add method in the patient service */
+    @Test
+    public void addCallsPatientServiceAdd() throws Exception{
+        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "ABC123DEF", "5555555555", "Provider", "DEF123ABC"));
+        
+        ArgumentCaptor<Patient> patientCaptor = ArgumentCaptor.forClass(Patient.class);
+        List<Patient> capturedPatients;
+        
+        Mockito.when(this.patientService.add(Mockito.isA(Patient.class))).thenReturn(null);
+        
+        MockHttpServletRequestBuilder postPatient  = post("/patient/")
+                .content(jsonPatient)
+                .contentType(jsonContent);
+        
+        mockMvc.perform(postPatient);
+        
+        Mockito.verify(this.patientService, Mockito.times(1)).add(patientCaptor.capture());
+        capturedPatients = patientCaptor.getAllValues();
+        Assert.assertEquals(capturedPatients.get(0).getId(), 1L);
+        Assert.assertEquals(capturedPatients.get(0).getGivenName(), "Joe");
+        Assert.assertEquals(capturedPatients.get(0).getFamilyName(), "Dirt");
+        Assert.assertEquals(capturedPatients.get(0).getDiagnosis(), "ABC123DEF");
+        Assert.assertEquals(capturedPatients.get(0).getPhoneNumber(), "5555555555");
+        Assert.assertEquals(capturedPatients.get(0).getInsuranceProvider(), "Provider");
+        Assert.assertEquals(capturedPatients.get(0).getInsuranceId(), "DEF123ABC");
+    }
+    
+    @Test
+    public void addReturnsSavedPatient() throws Exception{
+        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "ABC123DEF", "5555555555", "Provider", "DEF123ABC"));
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", "963JKL852", "7777777777", "Aetna", "WER456YTG");
+        
+        Mockito.when(this.patientService.add(Mockito.isA(Patient.class))).thenReturn(samplePatient2);
+        
+        MockHttpServletRequestBuilder postPatient  = post("/patient/")
+                .content(jsonPatient)
+                .contentType(jsonContent);
+        
+        mockMvc.perform(postPatient)
+            .andExpect(status().isCreated())
+            .andExpect(jsonPath("$.givenName", is("Bobby")))
+            .andExpect(jsonPath("$.familyName", is("Johnson")))
+            .andExpect(jsonPath("$.diagnosis", is("ABC123DEF")));
+        
+    }
+    
     @Test
     public void getCallsPatientServiceRead() throws Exception {
     	Mockito.when(this.patientService.read(1L)).thenReturn(null);
@@ -68,7 +116,7 @@ public class PatientControllerTests {
     
     @Test
     public void getReturnsIntendedPatient() throws Exception {
-        Patient samplePatient = new Patient(1L, "Joe", "Dirt", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient = new Patient("Joe", "Dirt", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
     	
     	Mockito.when(this.patientService.read(1L)).thenReturn(samplePatient);
         
@@ -110,9 +158,9 @@ public class PatientControllerTests {
     @Test
     public void getAllReturnsIntendedPatientList() throws Exception{
     	// Create sample patients to populate a sample patient list to ensure proper input is being returned
-        Patient samplePatient1 = new Patient(1L, "Joe", "Dirt", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
-        Patient samplePatient2 = new Patient(2L, "Bobby", "Johnson", "963JKL852", "7777777777", "Aetna", "WER456YTG");
-    	Patient samplePatient3 = new Patient(3L, "Franklin", "Bango", "UIO789PAS", "9876543210", "Humana", "JOK852SNK");
+        Patient samplePatient1 = new Patient("Joe", "Dirt", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", "963JKL852", "7777777777", "Aetna", "WER456YTG");
+    	Patient samplePatient3 = new Patient("Franklin", "Bango", "UIO789PAS", "9876543210", "Humana", "JOK852SNK");
     	List<Patient> samplePatientList = new ArrayList<Patient>();
     	samplePatientList.add(samplePatient1);
     	samplePatientList.add(samplePatient2);
