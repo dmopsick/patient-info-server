@@ -82,9 +82,18 @@ public class PatientService {
         this.patientRepository.delete(patientId);
     }
     
-    /** Updates a given patient's diagnosis info */
-    public Patient editDiagnosis(Patient originalPatient, Patient updatedPatient){
+    /** Updates a given patient's attributes with all of the attributes of a 
+     * newly uploaded patient object in order to keep the patient at
+     * the same id in the database */
+    public Patient edit(Patient originalPatient, Patient updatedPatient){
+        originalPatient.setGivenName(updatedPatient.getGivenName());
+        originalPatient.setFamilyName(updatedPatient.getFamilyName());
+        originalPatient.setAddress(updatedPatient.getAddress());
         originalPatient.setDiagnosis(updatedPatient.getDiagnosis());
+        originalPatient.setPhoneNumber(updatedPatient.getPhoneNumber());
+        originalPatient.setInsuranceProvider(updatedPatient.getInsuranceProvider());
+        originalPatient.setInsuranceId(updatedPatient.getInsuranceId());
+        
         return this.patientRepository.save(originalPatient);
     }
 }

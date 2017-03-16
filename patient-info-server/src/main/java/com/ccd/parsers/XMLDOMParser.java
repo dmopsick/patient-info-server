@@ -5,6 +5,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -13,9 +14,13 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.ccd.models.Patient;
+import com.ccd.services.PatientService;
+
 
 @Component
 public class XMLDOMParser {
+    private static final Logger logger = Logger.getLogger(XMLDOMParser.class);
+    
 	public XMLDOMParser(){}
 	
 	/** This method initializes the XML parser and takes in the raw data before feeding it into the appropriate methods */
@@ -47,7 +52,8 @@ public class XMLDOMParser {
 			e.printStackTrace();
 		}
 		
-		// If the XML file fails to be parsed for some reason it will return null
+		logger.info("Flag - the file could not be parsed");
+		// If the XML file fails to be parsed for some reason it will return null	
 		return null;
 	}
 	
@@ -84,6 +90,12 @@ public class XMLDOMParser {
 		// Parse the family name of the patient
 		String familyName = patient.getElementsByTagName("familyName").item(0).getTextContent();
 		
+		// Parse the address element
+		Element addressElement = (Element) patient.getElementsByTagName("address").item(0);
+		
+		// Parse the address into a single string from the address element
+		String address = parseAddress(addressElement);
+		
 		// Parse the diagnosis code of the patient 
 		String diagnosis = patient.getElementsByTagName("diagnosis").item(0).getTextContent();
 		
@@ -101,8 +113,30 @@ public class XMLDOMParser {
 		String insuranceId = patient.getElementsByTagName("insuranceId").item(0).getTextContent();
 		
 		// Create a patient model
-		Patient patientModel = new Patient(givenName, familyName, diagnosis, phoneNumber, insuranceProvider, insuranceId);
+		Patient patientModel = new Patient(givenName, familyName, address, diagnosis, phoneNumber, insuranceProvider, insuranceId);
 		
 		return patientModel;
 	}
+
+    private String parseAddress(Element addressElement) {
+        // Parse the streetAddress of the address
+        String streetAddress = addressElement.getElementsByTagName("streetAddress").item(0).getTextContent();
+        
+        // Parse the city of the address
+        String city = addressElement.getElementsByTagName("city").item(0).getTextContent();
+        
+        // Parse the state of the address
+        String state = addressElement.getElementsByTagName("state").item(0).getTextContent();
+        
+        // Parse the postalCode of the address
+        String postalCode = addressElement.getElementsByTagName("postalCode").item(0).getTextContent();
+        
+        // Parse the country of the address
+        String country = addressElement.getElementsByTagName("country").item(0).getTextContent();
+        
+        // Combine the different elements of the address into a single string
+        String address = streetAddress + ", " + city + ", " + state + ", " + postalCode + ", " + country;
+        
+        return address;
+    }
 }

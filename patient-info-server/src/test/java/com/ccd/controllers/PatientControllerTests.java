@@ -60,7 +60,8 @@ public class PatientControllerTests {
     /** This tests that add calls the add method in the patient service */
     @Test
     public void addCallsPatientServiceAdd() throws Exception{
-        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "ABC123DEF", "5555555555", "Provider", "DEF123ABC"));
+        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "Address1", "ABC123DEF", "5555555555", 
+                "Provider", "DEF123ABC"));
         
         ArgumentCaptor<Patient> patientCaptor = ArgumentCaptor.forClass(Patient.class);
         List<Patient> capturedPatients;
@@ -75,7 +76,6 @@ public class PatientControllerTests {
         
         Mockito.verify(this.patientService, Mockito.times(1)).add(patientCaptor.capture());
         capturedPatients = patientCaptor.getAllValues();
-        Assert.assertEquals(capturedPatients.get(0).getId(), 1L);
         Assert.assertEquals(capturedPatients.get(0).getGivenName(), "Joe");
         Assert.assertEquals(capturedPatients.get(0).getFamilyName(), "Dirt");
         Assert.assertEquals(capturedPatients.get(0).getDiagnosis(), "ABC123DEF");
@@ -85,9 +85,10 @@ public class PatientControllerTests {
     }
     
     @Test
-    public void addReturnsSavedPatient() throws Exception{
-        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "ABC123DEF", "5555555555", "Provider", "DEF123ABC"));
-        Patient samplePatient2 = new Patient("Bobby", "Johnson", "963JKL852", "7777777777", "Aetna", "WER456YTG");
+    public void addReturnsIntendedPatient() throws Exception{
+        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "Address", "ABC123DEF", "5555555555", 
+                "Provider", "DEF123ABC"));
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
         
         Mockito.when(this.patientService.add(Mockito.isA(Patient.class))).thenReturn(samplePatient2);
         
@@ -99,7 +100,7 @@ public class PatientControllerTests {
             .andExpect(status().isCreated())
             .andExpect(jsonPath("$.givenName", is("Bobby")))
             .andExpect(jsonPath("$.familyName", is("Johnson")))
-            .andExpect(jsonPath("$.diagnosis", is("ABC123DEF")));
+            .andExpect(jsonPath("$.diagnosis", is("963JKL852")));
         
     }
     
@@ -116,7 +117,7 @@ public class PatientControllerTests {
     
     @Test
     public void getReturnsIntendedPatient() throws Exception {
-        Patient samplePatient = new Patient("Joe", "Dirt", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient = new Patient("Joe", "Dirt", "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
     	
     	Mockito.when(this.patientService.read(1L)).thenReturn(samplePatient);
         
@@ -124,9 +125,9 @@ public class PatientControllerTests {
         
         mockMvc.perform(getPatient)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.givenName", is("Joe")))
                 .andExpect(jsonPath("$.familyName", is("Dirt")))
+                .andExpect(jsonPath("$.address", is("Address1")))
                 .andExpect(jsonPath("$.diagnosis", is("ABC123DEF")))
                 .andExpect(jsonPath("$.phoneNumber", is("5555555555")))
                 .andExpect(jsonPath("$.insuranceProvider", is("Provider")))
@@ -158,9 +159,9 @@ public class PatientControllerTests {
     @Test
     public void getAllReturnsIntendedPatientList() throws Exception{
     	// Create sample patients to populate a sample patient list to ensure proper input is being returned
-        Patient samplePatient1 = new Patient("Joe", "Dirt", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
-        Patient samplePatient2 = new Patient("Bobby", "Johnson", "963JKL852", "7777777777", "Aetna", "WER456YTG");
-    	Patient samplePatient3 = new Patient("Franklin", "Bango", "UIO789PAS", "9876543210", "Humana", "JOK852SNK");
+        Patient samplePatient1 = new Patient("Joe", "Dirt", "Address1","ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", "Address2", "963JKL852", "7777777777", "Aetna", "WER456YTG");
+    	Patient samplePatient3 = new Patient("Aubrey", "Graham", "Address3", "UIO789PAS", "9876543210", "Humana", "JOK852SNK");
     	List<Patient> samplePatientList = new ArrayList<Patient>();
     	samplePatientList.add(samplePatient1);
     	samplePatientList.add(samplePatient2);
@@ -176,8 +177,118 @@ public class PatientControllerTests {
     			.andExpect(jsonPath("$[0].familyName", is("Dirt")))
     			.andExpect(jsonPath("$[1].givenName", is("Bobby")))
     			.andExpect(jsonPath("$[1].familyName", is("Johnson")))
-    			.andExpect(jsonPath("$[2].givenName", is("Franklin")))
-    			.andExpect(jsonPath("$[2].familyName", is("Bango")));
+    			.andExpect(jsonPath("$[2].givenName", is("Aubrey")))
+    			.andExpect(jsonPath("$[2].familyName", is("Graham")));
+    }
+    
+    
+    @Test
+    public void deleteCallsPatientServiceRead() throws Exception{
+        ArgumentCaptor<Long> longCaptor = ArgumentCaptor.forClass(Long.class);
+        List<Long> capturedLongs;
+        Long testLong = 1L;
+        
+        Mockito.when(this.patientService.read(1L)).thenReturn(null);
+        
+        MockHttpServletRequestBuilder deletePatient = delete("/patient/1");
+        
+        mockMvc.perform(deletePatient)
+                .andExpect(status().isNotFound());
+        
+        Mockito.verify(this.patientService, Mockito.times(1)).read(longCaptor.capture());
+        capturedLongs = longCaptor.getAllValues();
+        Assert.assertEquals(testLong, capturedLongs.get(0));
+    }
+    
+    @Test
+    public void deleteCallsPatientServiceDelete() throws Exception{
+        Patient samplePatient1 = new Patient("Joe", "Dirt", "Address1","ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        ArgumentCaptor<Long> longCaptor = ArgumentCaptor.forClass(Long.class);
+        List<Long> capturedLongs;
+        Long testLong = 1L;
+        
+        Mockito.when(this.patientService.read(1L)).thenReturn(samplePatient1);
+        Mockito.doNothing().when(this.patientService).delete(1L);
+        
+        MockHttpServletRequestBuilder deletePatient = delete("/patient/1");
+        
+        mockMvc.perform(deletePatient)
+                .andExpect(status().isOk());
+        
+        Mockito.verify(this.patientService, Mockito.times(1)).delete(longCaptor.capture());
+        capturedLongs = longCaptor.getAllValues();
+        Assert.assertEquals(testLong, capturedLongs.get(0));
+    }
+
+    @Test
+    public void putCallsPatientServiceRead() throws Exception{
+        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "Address1", "ABC123DEF", "5555555555", 
+                "Provider", "DEF123ABC"));
+        ArgumentCaptor<Long> longCaptor = ArgumentCaptor.forClass(Long.class);
+        List<Long> capturedLongs;
+        Long testLong = 1L;
+        
+        Mockito.when(this.patientService.read(1L)).thenReturn(null);
+        
+        MockHttpServletRequestBuilder putPatient = put("/patient/1")
+                .content(jsonPatient)
+                .contentType(jsonContent);
+                
+        mockMvc.perform(putPatient)
+                .andExpect(status().isNotFound());
+        
+        Mockito.verify(this.patientService, Mockito.times(1)).read(longCaptor.capture());
+        capturedLongs = longCaptor.getAllValues();
+        Assert.assertEquals(testLong, capturedLongs.get(0));
+    }
+    
+    @Test
+    public void putCallsPatientServiceEdit() throws Exception{
+        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "Address1", "ABC123DEF", "5555555555", 
+                "Provider", "DEF123ABC"));
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", "Address2", "963JKL852", "7777777777", "Aetna", "WER456YTG");
+        ArgumentCaptor<Patient> patientCaptor = ArgumentCaptor.forClass(Patient.class);
+        List<Patient> capturedPatients;
+        
+        
+        Mockito.when(this.patientService.read(1L)).thenReturn(samplePatient2);
+        Mockito.when(this.patientService.edit(Mockito.isA(Patient.class), Mockito.isA(Patient.class))).thenReturn(null);
+        
+        MockHttpServletRequestBuilder putPatient = put("/patient/1")
+                .content(jsonPatient)
+                .contentType(jsonContent);
+        
+        mockMvc.perform(putPatient);
+        
+        Mockito.verify(this.patientService, Mockito.times(1)).edit(patientCaptor.capture(), patientCaptor.capture());
+        capturedPatients = patientCaptor.getAllValues();
+        Assert.assertEquals("Bobby Johnson", capturedPatients.get(0).getFullName());
+        Assert.assertEquals("Address2", capturedPatients.get(0).getAddress());
+        Assert.assertEquals("963JKL852", capturedPatients.get(0).getDiagnosis());
+        Assert.assertEquals("Joe Dirt", capturedPatients.get(1).getFullName());
+        Assert.assertEquals("Address1", capturedPatients.get(1).getAddress());
+        Assert.assertEquals("ABC123DEF", capturedPatients.get(1).getDiagnosis());
+    }
+    
+    @Test
+    public void putReturnsIntendedPatient() throws Exception{
+        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "Address1", "ABC123DEF", "5555555555", 
+                "Provider", "DEF123ABC"));
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", "Address2", "963JKL852", "7777777777", "Aetna", "WER456YTG");
+        Patient samplePatient3 = new Patient("Aubrey", "Graham", "Address3", "UIO789PAS", "9876543210", "Humana", "JOK852SNK");
+        
+        Mockito.when(this.patientService.read(1L)).thenReturn(samplePatient2);
+        Mockito.when(this.patientService.edit(Mockito.isA(Patient.class), Mockito.isA(Patient.class))).thenReturn(samplePatient3);
+        
+        MockHttpServletRequestBuilder putPatient = put("/patient/1")
+                .content(jsonPatient)
+                .contentType(jsonContent);
+        
+        mockMvc.perform(putPatient)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.givenName", is("Aubrey")))
+                .andExpect(jsonPath("$.familyName", is("Graham")))
+                .andExpect(jsonPath("$.address", is("Address3")));
     }
     
 }

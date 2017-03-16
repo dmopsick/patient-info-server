@@ -34,6 +34,7 @@ public class PatientController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	ResponseEntity<Patient> addPatient(@RequestBody Patient bodyPatient){
+	    // logger.info("FLAG - got into the post method");
 	    Patient savedPatient = this.patientService.add(bodyPatient);
 	    
 	    return new ResponseEntity<Patient>(savedPatient, HttpStatus.CREATED);
@@ -85,5 +86,38 @@ public class PatientController {
 		
 		// Return the list of patients and the appropriate HTTP status
 		return new ResponseEntity<List<Patient>>(returnedPatientList, responseStatus);
+	}
+	
+	@RequestMapping(method = RequestMethod.DELETE, value = "/{patientId}")
+	ResponseEntity<HttpStatus> deletePatient(@PathVariable Long patientId){
+	    HttpStatus responseStatus;
+	    
+	    Patient patientToDelete = this.patientService.read(patientId);
+	    if(patientToDelete == null){
+	        responseStatus = HttpStatus.NOT_FOUND;
+	    }
+	    else{
+	        this.patientService.delete(patientId);
+	        responseStatus = HttpStatus.OK;
+	    }
+	    logger.info("Flag " + responseStatus);
+	    return new ResponseEntity<HttpStatus>(responseStatus);
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT, value = "/{patientId}")
+	ResponseEntity<Patient> putPatient(@PathVariable Long patientId, @RequestBody Patient bodyPatient){
+	    HttpStatus responseStatus;
+	    Patient updatedPatient = null;
+	    
+	    Patient patientToEdit = this.patientService.read(patientId);
+	    if(patientToEdit == null){
+	        responseStatus = HttpStatus.NOT_FOUND;
+	    }
+	    else{
+	        updatedPatient = this.patientService.edit(patientToEdit, bodyPatient);
+	        responseStatus = HttpStatus.OK;
+	    }
+	    
+	    return new ResponseEntity<Patient>(updatedPatient, responseStatus);
 	}
 }

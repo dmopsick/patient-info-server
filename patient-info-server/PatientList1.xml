@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <patientList>
    <patient id="001">
-	  <givenName>John</givenName>
-	  <familyName>Doe </familyName>
+	  <givenName>William</givenName>
+	  <familyName>Maxwell</familyName>
+	  <address>
+	    <streetAddress>1738 Cactus Ave.</streetAddress>
+		<city>Patterson</city>
+		<state>NJ</state>
+		<postalCode>07501</postalCode>
+		<country>US</country>
+	  </address>
       <diagnosis>123ABC456</diagnosis>
       <phonenumber>5555555555</phonenumber>
 	  <insuranceProvider>BlueCrossBlueShield</insuranceProvider>
@@ -11,6 +18,13 @@
 	<patient id="002">
 	  <givenName>Robert</givenName>
 	  <familyName>Johnson</familyName>
+	  <address>
+	    <streetAddress>8785 Windfall St.</streetAddress>
+		<city>Whitehall</city>
+		<state>PA</state>
+		<postalCode>18052</postalCode>
+		<country>US</country>
+	  </address>
       <diagnosis>123ABC456</diagnosis>
       <phonenumber>1234567891</phonenumber>
 	  <insuranceProvider>Aetna</insuranceProvider>
@@ -19,6 +33,13 @@
    	<patient id="003">
 	  <givenName>Janice</givenName>
 	  <familyName>Bumble</familyName>
+	  <address>
+	    <streetAddress>711 Old York Drive</streetAddress>
+		<city>Richmond</city>
+		<state>VA</state>
+		<postalCode>23223</postalCode>
+		<country>US</country>
+	  </address>
       <diagnosis>123ABC456</diagnosis>
       <phonenumber>6877894554</phonenumber>
 	  <insuranceProvider>Humana</insuranceProvider>
@@ -27,57 +48,16 @@
    	<patient id="004">
 	  <givenName>Laura</givenName>
 	  <familyName>Floogle</familyName>
+	  <address>
+	    <streetAddress>787 Lakeview St.</streetAddress>
+		<city>Marion</city>
+		<state>NC</state>
+		<postalCode>28752</postalCode>
+		<country>US</country>
+	  </address>
       <diagnosis>123ABC456</diagnosis>
       <phonenumber>4566548778</phonenumber>
 	  <insuranceProvider>KaiserPermanente</insuranceProvider>
       <insuranceId>85NMASDG7</insuranceId>
-   </patient>
-   	<patient id="005">
-	  <givenName>Gianna</givenName>
-	  <familyName>Shlup</familyName>
-      <diagnosis>123ABC456</diagnosis>
-      <phonenumber>6543218525</phonenumber>
-	  <insuranceProvider>UnitedHealthcare</insuranceProvider>
-      <insuranceId>52JKFGU8Y</insuranceId>
-   </patient>
-   	<patient id="006">
-	  <givenName>David</givenName>
-	  <familyName>Durango </familyName>
-      <diagnosis>123ABC456</diagnosis>
-      <phonenumber>9896556368</phonenumber>
-	  <insuranceProvider>UnitedHealthcare</insuranceProvider>
-      <insuranceId>FTK857KLO</insuranceId>
-   </patient>
-   	<patient id="007">
-	  <givenName>George</givenName>
-	  <familyName>Puff</familyName>
-      <diagnosis>123ABC456</diagnosis>
-      <phonenumber>0124567898</phonenumber>
-	  <insuranceProvider>BlueCrossBlueShield</insuranceProvider>
-      <insuranceId>BO2048751</insuranceId>
-   </patient>
-   	<patient id="008">
-      <givenName>Lara</givenName>
-	  <familyName>Pudge</familyName>
-      <diagnosis>123ABC456</diagnosis>
-      <phonenumber>7898527410</phonenumber>
-	  <insuranceProvider>BlueCrossBlueShield</insuranceProvider>
-      <insuranceId>JKL45IUTO</insuranceId>
-   </patient>
-   	<patient id="009">
-	  <givenName>Damon</givenName>
-	  <familyName>Grable</familyName>
-      <diagnosis>123ABC456</diagnosis>
-      <phonenumber>6545851245</phonenumber>
-	  <insuranceProvider>Aetna</insuranceProvider>
-      <insuranceId>UTIO548PO</insuranceId>
-   </patient>
-   	<patient id="010">
-      <givenName>Pablo</givenName>
-	  <familyName>Breezy</familyName>
-      <diagnosis>123ABC456</diagnosis>
-      <phonenumber>0215200630</phonenumber>
-	  <insuranceProvider>BlueCrossBlueShield</insuranceProvider>
-      <insuranceId>JLK524O89</insuranceId>
    </patient>
 </patientList>

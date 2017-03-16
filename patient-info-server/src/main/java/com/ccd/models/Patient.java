@@ -14,6 +14,7 @@ public class Patient {
 	private long id;
 	private String givenName;
 	private String familyName;
+    private String address;
 	private String diagnosis;
 	private String phoneNumber;
 	private String insuranceProvider;
@@ -21,9 +22,10 @@ public class Patient {
 	
 	private Patient(){};
 	
-	public Patient(String givenName, String familyName, String diagnosis, String phoneNumber, String insuranceProvider, String insuranceId){
+	public Patient(String givenName, String familyName, String address, String diagnosis, String phoneNumber, String insuranceProvider, String insuranceId){
 		this.givenName = givenName;
 		this.familyName = familyName;
+		this.address = address;
 		this.diagnosis = diagnosis;
 		this.phoneNumber = phoneNumber;
 		this.insuranceProvider = insuranceProvider;
@@ -50,6 +52,10 @@ public class Patient {
         return givenName + " " + familyName;
     }
 	
+	public String getAddress(){
+	    return address;
+	}
+	
 	public String getPhoneNumber(){
 		return phoneNumber;
 	}
@@ -71,9 +77,18 @@ public class Patient {
 		this.givenName = givenName;
 	}
 	
+	/** Setter method for family name variable */
+	public void setFamilyName(String familyName){
+	    this.familyName = familyName;
+	}
+	
 	/** Setter method for the family name variable */
 	public void setLastName(String familyName){
 	    this.familyName = familyName;
+	}
+	
+	public void setAddress(String address){
+	    this.address = address;
 	}
 	
 	/** Setter method for the phone number variable */
