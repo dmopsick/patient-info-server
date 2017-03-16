@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import com.ccd.models.Patient;
 import com.ccd.parsers.XMLDOMParser;
 import com.ccd.repositories.PatientRepository;
+import com.ccd.validators.PatientValidator;
 
 @Service
 public class PatientService {
@@ -34,7 +35,9 @@ public class PatientService {
     }
 
     @InitBinder
-    protected void initBinder(WebDataBinder binder) {}
+    protected void initBinder(WebDataBinder binder) {
+        binder.addValidators(new PatientValidator());
+    }
 
     /** Adds a list of patients into the repository from a XML file 
      * passed into the method via filename*/

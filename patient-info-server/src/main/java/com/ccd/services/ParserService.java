@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 
 import com.ccd.models.Patient;
 import com.ccd.parsers.XMLDOMParser;
+import com.ccd.validators.PatientValidator;
 
 @Service
 public class ParserService {
@@ -20,7 +21,9 @@ public class ParserService {
     }
     
     @InitBinder
-    protected void initBinder(WebDataBinder binder) {}
+    protected void initBinder(WebDataBinder binder) {
+        binder.addValidators(new PatientValidator());
+    }
     
     /** This method takes in a file name and calls the XMLDOMParser
      * to parse and return the patient(s) in a given file */

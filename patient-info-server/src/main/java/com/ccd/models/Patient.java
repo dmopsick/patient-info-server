@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -12,12 +14,24 @@ public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@NotNull
+	@Size(max = 35)
 	private String givenName;
+	@NotNull
+	@Size(max = 35)
 	private String familyName;
+	@NotNull
     private String address;
+	@NotNull
+	@Size(min = 9, max = 9)
 	private String diagnosis;
+	@NotNull
+	@Size(min = 12, max = 12)
 	private String phoneNumber;
+	@NotNull
 	private String insuranceProvider;
+	@NotNull
+	@Size(min = 9, max = 9)
 	private String insuranceId;
 	
 	private Patient(){};

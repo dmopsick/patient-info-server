@@ -2,6 +2,8 @@ package com.ccd.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ccd.models.Patient;
 import com.ccd.services.PatientService;
+import com.ccd.validators.PatientValidator;
 
 @RestController
 @RequestMapping("/patient")
@@ -30,10 +33,12 @@ public class PatientController {
 	}
 	
 	@InitBinder
-    protected void initBinder(WebDataBinder binder) {}
+    protected void initBinder(WebDataBinder binder) {
+	    binder.addValidators(new PatientValidator());
+	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	ResponseEntity<Patient> addPatient(@RequestBody Patient bodyPatient){
+	ResponseEntity<Patient> addPatient(@Valid @RequestBody Patient bodyPatient){
 	    // logger.info("FLAG - got into the post method");
 	    Patient savedPatient = this.patientService.add(bodyPatient);
 	    
@@ -105,7 +110,7 @@ public class PatientController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/{patientId}")
-	ResponseEntity<Patient> putPatient(@PathVariable Long patientId, @RequestBody Patient bodyPatient){
+	ResponseEntity<Patient> putPatient(@PathVariable Long patientId, @Valid @RequestBody Patient bodyPatient){
 	    HttpStatus responseStatus;
 	    Patient updatedPatient = null;
 	    
