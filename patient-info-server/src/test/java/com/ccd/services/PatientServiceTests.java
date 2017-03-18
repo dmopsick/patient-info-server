@@ -1,10 +1,6 @@
 package com.ccd.services;
 
-import static org.hamcrest.Matchers.is;
-
-import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;

@@ -9,7 +9,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
 import com.ccd.models.Patient;
-import com.ccd.parsers.XMLDOMParser;
 import com.ccd.repositories.PatientRepository;
 import com.ccd.validators.PatientValidator;
 
