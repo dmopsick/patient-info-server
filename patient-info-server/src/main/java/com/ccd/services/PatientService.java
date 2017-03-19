@@ -21,7 +21,8 @@ public class PatientService {
     /** This is the constructor to be used by the application */
     @Autowired
     public PatientService(PatientRepository patientRepository, ParserService parserService) {
-        this.patientRepository = patientRepository;
+        logger.info("Flag - autowired constructor called.");
+    	this.patientRepository = patientRepository;
         this.parserService = parserService;
         addPatientFromFile("PatientList1.xml");
     }
@@ -29,7 +30,8 @@ public class PatientService {
     /** This constructor is for testing services to avoid calling addPatientFromFile
      * I do not want to add items in the database when testing the application */
     public PatientService(PatientRepository patientRepository, ParserService parserService, Boolean live) {
-        this.patientRepository = patientRepository;
+        logger.info("Flag - testing constructor being called");
+    	this.patientRepository = patientRepository;
         this.parserService = parserService;
     }
 
@@ -41,6 +43,7 @@ public class PatientService {
     /** Adds a list of patients into the repository from a XML file 
      * passed into the method via filename*/
     public void addPatientFromFile(String fileName) {
+    	logger.info("Flag - addpatientFromFile called.");
         // Save the returned list of patients parsed from XML
         Patient[] patientArray = this.parserService.parsePatientFromFile(fileName);
 

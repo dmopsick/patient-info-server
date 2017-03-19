@@ -48,7 +48,7 @@ public class PatientController {
 	/** Handles the request for a specific patient */
 	@RequestMapping(method = RequestMethod.GET, value = "/{patientID}")
 	ResponseEntity<Patient> readPatient(@PathVariable Long patientID){
-		logger.info("FLAG patient/1 called");
+		logger.info("FLAG patient/{patientId} called");
 		// Initialize the HTTP status to be returned
 		HttpStatus responseStatus;
 		

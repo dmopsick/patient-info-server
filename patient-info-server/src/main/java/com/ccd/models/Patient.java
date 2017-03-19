@@ -79,8 +79,9 @@ public class Patient {
 	
 	
 	/** Display birthday in mm/dd/yyyy format */
-	public String displaySimpleBirthdate(){
-	    
+	public String getSimpleBirthdate(){
+	    return birthDate.getMonthOfYear() + "/" + birthDate.getDayOfMonth() + "/"
+	    		+ birthDate.getYear();
 	}
 	
 	
