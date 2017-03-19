@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -20,6 +23,8 @@ public class Patient {
 	@NotNull
 	@Size(max = 35)
 	private String familyName;
+	@NotNull
+	private LocalDate birthDate;
 	@NotNull
     private String address;
 	@NotNull
@@ -36,9 +41,10 @@ public class Patient {
 	
 	private Patient(){};
 	
-	public Patient(String givenName, String familyName, String address, String diagnosis, String phoneNumber, String insuranceProvider, String insuranceId){
+	public Patient(String givenName, String familyName, LocalDate birthDate, String address, String diagnosis, String phoneNumber, String insuranceProvider, String insuranceId){
 		this.givenName = givenName;
 		this.familyName = familyName;
+		this.birthDate = birthDate;
 		this.address = address;
 		this.diagnosis = diagnosis;
 		this.phoneNumber = phoneNumber;
@@ -65,6 +71,25 @@ public class Patient {
 	public String getFullName(){
         return givenName + " " + familyName;
     }
+	
+	@JsonIgnore
+	public LocalDate getBirthDate(){
+	    return birthDate;
+	}
+	
+	
+	/** Display birthday in mm/dd/yyyy format */
+	public String displaySimpleBirthdate(){
+	    
+	}
+	
+	
+	/** Return the age of the patient */
+	public int getAge(){
+	    LocalDate now = new LocalDate();
+	    Years age = Years.yearsBetween(birthDate, now);
+	    return age.getYears();
+	}
 	
 	public String getAddress(){
 	    return address;

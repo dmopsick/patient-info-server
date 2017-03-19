@@ -6,6 +6,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.log4j.Logger;
+import org.joda.time.LocalDate;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -90,6 +91,12 @@ public class XMLDOMParser {
 		// Parse the family name of the patient
 		String familyName = patient.getElementsByTagName("familyName").item(0).getTextContent();
 		
+		// Parse the birthdate element
+		Element birthDateElement = (Element) patient.getElementsByTagName("birthDate").item(0);
+		
+		// Oarse the birthdate into a LocalDate Object
+		LocalDate birthDate = parseBirthDate(birthDateElement);
+		
 		// Parse the address element
 		Element addressElement = (Element) patient.getElementsByTagName("address").item(0);
 		
@@ -113,11 +120,38 @@ public class XMLDOMParser {
 		String insuranceId = patient.getElementsByTagName("insuranceId").item(0).getTextContent();
 		
 		// Create a patient model
-		Patient patientModel = new Patient(givenName, familyName, address, diagnosis, phoneNumber, insuranceProvider, insuranceId);
+		Patient patientModel = new Patient(givenName, familyName, birthDate, address, diagnosis, phoneNumber, insuranceProvider, insuranceId);
 		
 		return patientModel;
 	}
 
+	/** Parse the birthDate element in XML into an object of LocalDate */
+    private LocalDate parseBirthDate(Element birthDateElement) {
+        // Parse the day of the birth date
+        String dayString = birthDateElement.getElementsByTagName("day").item(0).getTextContent();
+        
+        // Parse the day as an int
+        int day = Integer.parseInt(dayString);
+        
+        // Parse the month
+        String monthString = birthDateElement.getElementsByTagName("month").item(0).getTextContent();
+        
+        // Parse the month as an int 
+        int month = Integer.parseInt(monthString);
+        
+        // Parse the year
+        String yearString = birthDateElement.getElementsByTagName("year").item(0).getTextContent();
+        
+        //Parse the year as an int
+        int year = Integer.parseInt(yearString);
+        
+        // Create a LocalDate object
+        LocalDate birthDate = new LocalDate(year, month, day);
+        
+        return birthDate;
+    }
+
+    /** Parse the address from the separate XML elements into a single string */
     private String parseAddress(Element addressElement) {
         // Parse the streetAddress of the address
         String streetAddress = addressElement.getElementsByTagName("streetAddress").item(0).getTextContent();

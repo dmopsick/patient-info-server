@@ -3,6 +3,11 @@
    <patient id="001">
 	  <givenName>William</givenName>
 	  <familyName>Maxwell</familyName>
+	  <birthDate>
+	    <day>15</day>
+		<month>6</month>
+		<year>1986</year>
+	  </birthDate>
 	  <address>
 	    <streetAddress>1738 Cactus Ave.</streetAddress>
 		<city>Patterson</city>
@@ -18,6 +23,11 @@
 	<patient id="002">
 	  <givenName>Robert</givenName>
 	  <familyName>Johnson</familyName>
+	  <birthDate>
+	    <day>22</day>
+		<month>3</month>
+		<year>1964</year>
+	  </birthDate>
 	  <address>
 	    <streetAddress>8785 Windfall St.</streetAddress>
 		<city>Whitehall</city>
@@ -33,6 +43,11 @@
    	<patient id="003">
 	  <givenName>Janice</givenName>
 	  <familyName>Bumble</familyName>
+	  <birthDate>
+	    <day>25</day>
+		<month>11</month>
+		<year>1977</year>
+	  </birthDate>
 	  <address>
 	    <streetAddress>711 Old York Drive</streetAddress>
 		<city>Richmond</city>
@@ -48,6 +63,11 @@
    	<patient id="004">
 	  <givenName>Laura</givenName>
 	  <familyName>Floogle</familyName>
+	  <birthDate>
+	    <day>8</day>
+		<month>4</month>
+		<year>1994</year>
+	  </birthDate>
 	  <address>
 	    <streetAddress>787 Lakeview St.</streetAddress>
 		<city>Marion</city>

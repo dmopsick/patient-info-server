@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.joda.time.LocalDate;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -58,7 +59,7 @@ public class PatientControllerTests {
     /** This tests that add calls the add method in the patient service */
     @Test
     public void addCallsPatientServiceAdd() throws Exception{
-        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "Address1", "ABC123DEF", "5555555555", 
+        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1", "ABC123DEF", "5555555555", 
                 "Provider", "DEF123ABC"));
         
         ArgumentCaptor<Patient> patientCaptor = ArgumentCaptor.forClass(Patient.class);
@@ -84,9 +85,9 @@ public class PatientControllerTests {
     
     @Test
     public void addReturnsIntendedPatient() throws Exception{
-        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "Address", "ABC123DEF", "5555555555", 
+        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address", "ABC123DEF", "5555555555", 
                 "Provider", "DEF123ABC"));
-        Patient samplePatient2 = new Patient("Bobby", "Johnson", "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", new LocalDate(1975, 7, 3), "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
         
         Mockito.when(this.patientService.add(Mockito.isA(Patient.class))).thenReturn(samplePatient2);
         
@@ -115,7 +116,7 @@ public class PatientControllerTests {
     
     @Test
     public void getReturnsIntendedPatient() throws Exception {
-        Patient samplePatient = new Patient("Joe", "Dirt", "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient = new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
     	
     	Mockito.when(this.patientService.read(1L)).thenReturn(samplePatient);
         
@@ -157,9 +158,9 @@ public class PatientControllerTests {
     @Test
     public void getAllReturnsIntendedPatientList() throws Exception{
     	// Create sample patients to populate a sample patient list to ensure proper input is being returned
-        Patient samplePatient1 = new Patient("Joe", "Dirt", "Address1","ABC123DEF", "5555555555", "Provider", "DEF123ABC");
-        Patient samplePatient2 = new Patient("Bobby", "Johnson", "Address2", "963JKL852", "7777777777", "Aetna", "WER456YTG");
-    	Patient samplePatient3 = new Patient("Aubrey", "Graham", "Address3", "UIO789PAS", "9876543210", "Humana", "JOK852SNK");
+        Patient samplePatient1 = new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1","ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", new LocalDate(1975, 7, 3), "Address2", "963JKL852", "7777777777", "Aetna", "WER456YTG");
+    	Patient samplePatient3 = new Patient("Aubrey", "Graham", new LocalDate(1986, 10, 24), "Address3", "UIO789PAS", "9876543210", "Humana", "JOK852SNK");
     	List<Patient> samplePatientList = new ArrayList<Patient>();
     	samplePatientList.add(samplePatient1);
     	samplePatientList.add(samplePatient2);
@@ -200,7 +201,7 @@ public class PatientControllerTests {
     
     @Test
     public void deleteCallsPatientServiceDelete() throws Exception{
-        Patient samplePatient1 = new Patient("Joe", "Dirt", "Address1","ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient1 = new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1","ABC123DEF", "5555555555", "Provider", "DEF123ABC");
         ArgumentCaptor<Long> longCaptor = ArgumentCaptor.forClass(Long.class);
         List<Long> capturedLongs;
         Long testLong = 1L;
@@ -220,7 +221,7 @@ public class PatientControllerTests {
 
     @Test
     public void putCallsPatientServiceRead() throws Exception{
-        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "Address1", "ABC123DEF", "5555555555", 
+        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt",  new LocalDate(1970, 5, 20),"Address1", "ABC123DEF", "5555555555", 
                 "Provider", "DEF123ABC"));
         ArgumentCaptor<Long> longCaptor = ArgumentCaptor.forClass(Long.class);
         List<Long> capturedLongs;
@@ -242,9 +243,9 @@ public class PatientControllerTests {
     
     @Test
     public void putCallsPatientServiceEdit() throws Exception{
-        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "Address1", "ABC123DEF", "5555555555", 
+        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1", "ABC123DEF", "5555555555", 
                 "Provider", "DEF123ABC"));
-        Patient samplePatient2 = new Patient("Bobby", "Johnson", "Address2", "963JKL852", "7777777777", "Aetna", "WER456YTG");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", new LocalDate(1975, 7, 3), "Address2", "963JKL852", "7777777777", "Aetna", "WER456YTG");
         ArgumentCaptor<Patient> patientCaptor = ArgumentCaptor.forClass(Patient.class);
         List<Patient> capturedPatients;
         
@@ -270,10 +271,10 @@ public class PatientControllerTests {
     
     @Test
     public void putReturnsIntendedPatient() throws Exception{
-        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", "Address1", "ABC123DEF", "5555555555", 
+        String jsonPatient = jsonMapper.writeValueAsString(new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1", "ABC123DEF", "5555555555", 
                 "Provider", "DEF123ABC"));
-        Patient samplePatient2 = new Patient("Bobby", "Johnson", "Address2", "963JKL852", "7777777777", "Aetna", "WER456YTG");
-        Patient samplePatient3 = new Patient("Aubrey", "Graham", "Address3", "UIO789PAS", "9876543210", "Humana", "JOK852SNK");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", new LocalDate(1975, 7, 3), "Address2", "963JKL852", "7777777777", "Aetna", "WER456YTG");
+        Patient samplePatient3 = new Patient("Aubrey", "Graham", new LocalDate(1986, 10, 24), "Address3", "UIO789PAS", "9876543210", "Humana", "JOK852SNK");
         
         Mockito.when(this.patientService.read(1L)).thenReturn(samplePatient2);
         Mockito.when(this.patientService.edit(Mockito.isA(Patient.class), Mockito.isA(Patient.class))).thenReturn(samplePatient3);
