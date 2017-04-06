@@ -37,12 +37,38 @@ public class PatientController {
 	    binder.addValidators(new PatientValidator());
 	}
 	
+	/** Handles POST request for adding a single patient into the database
+	 * via JSON */
 	@RequestMapping(method = RequestMethod.POST)
 	ResponseEntity<Patient> addPatient(@Valid @RequestBody Patient bodyPatient){
 	    // logger.info("FLAG - got into the post method");
 	    Patient savedPatient = this.patientService.add(bodyPatient);
 	    
 	    return new ResponseEntity<Patient>(savedPatient, HttpStatus.CREATED);
+	}
+	
+	/** Allows the user to add a patients into the database via a file manually
+	 * added into the root directory */
+	@RequestMapping(method = RequestMethod.POST, value = "/{fileName}")
+	ResponseEntity<Patient[]> addPatientFile(@PathVariable String fileName){
+		// Add .xml to the fileName 
+		String fileWithExtension = fileName += ".xml";
+		
+		// Initialize the HTTP status variable to be returned
+		HttpStatus responseStatus;
+		
+		// Initialize the array that will be returned holding generated patients
+		Patient[] addedPatients;
+		
+		// Add the patients from the passed file into the database 
+		addedPatients = this.patientService.addPatientFromFile(fileWithExtension);
+		if(addedPatients == null){
+			responseStatus = HttpStatus.NOT_FOUND;
+		}
+		else{
+			responseStatus = HttpStatus.CREATED;
+		}
+		return new ResponseEntity<Patient[]>(addedPatients, responseStatus);
 	}
 	
 	/** Handles the request for a specific patient */

@@ -1,6 +1,7 @@
 package com.ccd.controllers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -101,6 +102,26 @@ public class PatientControllerTests {
             .andExpect(jsonPath("$.familyName", is("Johnson")))
             .andExpect(jsonPath("$.diagnosis", is("963JKL852")));
         
+    }
+    
+    @Test
+    public void addPatientFileCallsPatientServiceAddPatientFromFile() throws Exception{
+    	Mockito.when(this.patientService.addPatientFromFile("test.xml")).thenReturn(new Patient[1]);
+    	
+    	MockHttpServletRequestBuilder postPatient  = post("/patient/test");
+    	
+    	mockMvc.perform(postPatient)
+    			.andExpect(status().isCreated());
+    	
+    	Mockito.verify(this.patientService, Mockito.times(1)).addPatientFromFile("test.xml");
+    }
+    
+    @Test
+    public void addPatientFileHandlesBadFileName() throws Exception{
+    	MockHttpServletRequestBuilder postPatient  = post("/patient/test");
+    	
+    	mockMvc.perform(postPatient)
+    			.andExpect(status().isNotFound());
     }
     
     @Test

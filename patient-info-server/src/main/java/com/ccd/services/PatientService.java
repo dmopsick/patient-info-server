@@ -42,13 +42,13 @@ public class PatientService {
 
     /** Adds a list of patients into the repository from a XML file 
      * passed into the method via filename*/
-    public void addPatientFromFile(String fileName) {
+    public Patient[] addPatientFromFile(String fileName) {
     	logger.info("Flag - addpatientFromFile called.");
         // Save the returned list of patients parsed from XML
         Patient[] patientArray = this.parserService.parsePatientFromFile(fileName);
 
         // Add the parsed patients into the array
-        addMultiple(patientArray);
+        return addMultiple(patientArray);
     }
 
     /** Save multiple patients at once */

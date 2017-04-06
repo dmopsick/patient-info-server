@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -38,6 +39,8 @@ public class Patient {
 	@NotNull
 	@Size(min = 9, max = 9)
 	private String insuranceId;
+	@ManyToOne
+	private User user;
 	
 	private Patient(){};
 	
@@ -112,6 +115,10 @@ public class Patient {
 		return insuranceId;
 	}
 	
+	public User getUser(){
+		return user;
+	}
+	
 	/** Setter method for the given name variable */
 	public void setGivenName(String givenName){
 		this.givenName = givenName;
@@ -119,11 +126,6 @@ public class Patient {
 	
 	/** Setter method for family name variable */
 	public void setFamilyName(String familyName){
-	    this.familyName = familyName;
-	}
-	
-	/** Setter method for the family name variable */
-	public void setLastName(String familyName){
 	    this.familyName = familyName;
 	}
 	
