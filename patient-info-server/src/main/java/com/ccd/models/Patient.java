@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.apache.log4j.Logger;
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
 
@@ -24,7 +25,7 @@ public class Patient {
 	@NotNull
 	@Size(max = 35)
 	private String familyName;
-	@NotNull
+	// @NotNull
 	private LocalDate birthDate;
 	@NotNull
     private String address;
@@ -39,15 +40,15 @@ public class Patient {
 	@NotNull
 	@Size(min = 9, max = 9)
 	private String insuranceId;
-	@ManyToOne
-	private User user;
+//	@ManyToOne
+//	private User user;
 	
 	private Patient(){};
 	
-	public Patient(String givenName, String familyName, LocalDate birthDate, String address, String diagnosis, String phoneNumber, String insuranceProvider, String insuranceId){
+	public Patient(String givenName, String familyName, String birthDateString, String address, String diagnosis, String phoneNumber, String insuranceProvider, String insuranceId){
 		this.givenName = givenName;
 		this.familyName = familyName;
-		this.birthDate = birthDate;
+		this.birthDate = parseBirthDate(birthDateString);
 		this.address = address;
 		this.diagnosis = diagnosis;
 		this.phoneNumber = phoneNumber;
@@ -55,6 +56,29 @@ public class Patient {
 		this.insuranceId = insuranceId;
 	}
 	
+	private static final Logger logger = Logger.getLogger(Patient.class);
+	/** Take in a string of the birth date in mm/dd/yyyy format and 
+	 * convert it into a joda.LocalDate object */
+	public LocalDate parseBirthDate(String birthDate){
+		// Locate the index of the slashes
+		int slashIndex1 = birthDate.indexOf("/");
+		int slashIndex2 = birthDate.indexOf("/", slashIndex1 + 1);
+		
+		// Create substrings of month, day, and year
+		String monthString = birthDate.substring(0, slashIndex1);
+		String dayString = birthDate.substring(slashIndex1 + 1, slashIndex2);
+		String yearString = birthDate.substring(slashIndex2 + 1);		
+		
+		// Parse month, day, and year as integers
+		int month = Integer.parseInt(monthString);
+		int day = Integer.parseInt(dayString);
+		int year = Integer.parseInt(yearString);
+		
+		// Create a joda.LocalDate Object
+		LocalDate birthdateObject = new LocalDate(year, month, day);
+		// logger.info("FLAG: " + birthdateObject.toString());
+		return birthdateObject;
+	}
 	// Getter and setter methods to access and modify variables
 	public long getId(){
 		return id;
@@ -115,9 +139,9 @@ public class Patient {
 		return insuranceId;
 	}
 	
-	public User getUser(){
-		return user;
-	}
+//	public User getUser(){
+//		return user;
+//	}
 	
 	/** Setter method for the given name variable */
 	public void setGivenName(String givenName){

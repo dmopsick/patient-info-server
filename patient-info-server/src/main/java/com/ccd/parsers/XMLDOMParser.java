@@ -6,7 +6,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.log4j.Logger;
-import org.joda.time.LocalDate;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -15,10 +14,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.ccd.models.Patient;
-import com.ccd.services.PatientService;
 
-
-@Component
+@Component 
 public class XMLDOMParser {
     private static final Logger logger = Logger.getLogger(XMLDOMParser.class);
     
@@ -91,11 +88,11 @@ public class XMLDOMParser {
 		// Parse the family name of the patient
 		String familyName = patient.getElementsByTagName("familyName").item(0).getTextContent();
 		
-		// Parse the birthdate element
+		// Parse the birth date element
 		Element birthDateElement = (Element) patient.getElementsByTagName("birthDate").item(0);
 		
-		// Oarse the birthdate into a LocalDate Object
-		LocalDate birthDate = parseBirthDate(birthDateElement);
+		// Parse the birth date into an array of strings that will later be turned into a LocalDate
+		String birthDate = parseBirthDate(birthDateElement);
 		
 		// Parse the address element
 		Element addressElement = (Element) patient.getElementsByTagName("address").item(0);
@@ -125,28 +122,20 @@ public class XMLDOMParser {
 		return patientModel;
 	}
 
-	/** Parse the birthDate element in XML into an object of LocalDate */
-    private LocalDate parseBirthDate(Element birthDateElement) {
+	/** Parse the birthDate element in XML into a single string in mm/dd/yyyy format 
+	 * that will later be parsed into a LocalDate object in the Patient class */
+    private String parseBirthDate(Element birthDateElement) {    	
         // Parse the day of the birth date
         String dayString = birthDateElement.getElementsByTagName("day").item(0).getTextContent();
         
-        // Parse the day as an int
-        int day = Integer.parseInt(dayString);
-        
         // Parse the month
         String monthString = birthDateElement.getElementsByTagName("month").item(0).getTextContent();
-        
-        // Parse the month as an int 
-        int month = Integer.parseInt(monthString);
-        
+       
         // Parse the year
         String yearString = birthDateElement.getElementsByTagName("year").item(0).getTextContent();
-        
-        //Parse the year as an int
-        int year = Integer.parseInt(yearString);
-        
-        // Create a LocalDate object
-        LocalDate birthDate = new LocalDate(year, month, day);
+
+        // Combine the day, month, and year into a single string in mm/dd/yyyy format
+        String birthDate = monthString + "/" + dayString + "/" + yearString; 
         
         return birthDate;
     }

@@ -40,7 +40,7 @@ public class PatientController {
 	/** Handles POST request for adding a single patient into the database
 	 * via JSON */
 	@RequestMapping(method = RequestMethod.POST)
-	ResponseEntity<Patient> addPatient(@Valid @RequestBody Patient bodyPatient){
+	ResponseEntity<Patient> addPatient(@RequestBody Patient bodyPatient){
 	    // logger.info("FLAG - got into the post method");
 	    Patient savedPatient = this.patientService.add(bodyPatient);
 	    
@@ -136,7 +136,7 @@ public class PatientController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/{patientId}")
-	ResponseEntity<Patient> putPatient(@PathVariable Long patientId, @Valid @RequestBody Patient bodyPatient){
+	ResponseEntity<Patient> putPatient(@PathVariable Long patientId, @RequestBody Patient bodyPatient){
 	    HttpStatus responseStatus;
 	    Patient updatedPatient = null;
 	    

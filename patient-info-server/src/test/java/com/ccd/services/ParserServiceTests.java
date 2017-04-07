@@ -44,8 +44,8 @@ public class ParserServiceTests {
     /** Tests that parsePatientFromFile returns the intended value */
     @Test
     public void parsePatientFromFileReturnsExpectedPatients() throws Exception{
-        Patient samplePatient1 = new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
-        Patient samplePatient2 = new Patient("Bobby", "Johnson", new LocalDate(1975, 7, 3), "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
+        Patient samplePatient1 = new Patient("Joe", "Dirt", "1/2/1955", "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", "5/20/1988", "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
         Patient[] samplePatientArray = new Patient[2];
         samplePatientArray[0] = samplePatient1;
         samplePatientArray[1] = samplePatient2;

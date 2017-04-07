@@ -26,8 +26,8 @@ public class User {
 	@JsonIgnore
 	private String password;
 	
-	@OneToMany(mappedBy = "user")
-	private List<Patient> patientList;
+//	@OneToMany(mappedBy = "user")
+//	private List<Patient> patientList;
 	
 	@Transient
 	@Autowired
@@ -67,9 +67,9 @@ public class User {
 		this.password = password;
 	}
 	
-	public List<Patient> getPatientList(){
-		return patientList;
-	}
+//	public List<Patient> getPatientList(){
+//		return patientList;
+//	}
 	
 	/** Calls MyPassWordEncoder to encode the raw password passed by the user */
 	public String encode(String rawPassword){

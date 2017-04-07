@@ -47,8 +47,8 @@ public class PatientServiceTests {
      * Used in adding sample patients into the repository when the application is launched */
     @Test
     public void addPatientFromFileCallsParserServicParsePatientFromFile() throws Exception{
-        Patient samplePatient1 = new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
-        Patient samplePatient2 = new Patient("Bobby", "Johnson", new LocalDate(1975, 7, 3), "Address 2","963JKL852", "7777777777", "Aetna", "WER456YTG");
+        Patient samplePatient1 = new Patient("Joe", "Dirt", "1/2/1955", "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", "5/20/1988", "Address 2","963JKL852", "7777777777", "Aetna", "WER456YTG");
         Patient[] samplePatientArray = new Patient[2];
         samplePatientArray[0] = samplePatient1;
         samplePatientArray[1] = samplePatient2;
@@ -63,7 +63,7 @@ public class PatientServiceTests {
     /** Tests that the add method calls the save method in the patient repository */
     @Test
     public void addCallsPatientRepositorySave() throws Exception {
-    	Patient samplePatient1 = new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+    	Patient samplePatient1 = new Patient("Joe", "Dirt", "1/2/1955", "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
     	
     	ArgumentCaptor<Patient> patientCaptor = ArgumentCaptor.forClass(Patient.class);
     	List<Patient> capturedPatients;
@@ -85,8 +85,8 @@ public class PatientServiceTests {
     /** Tests that the add method returns the intended patient */
     @Test
     public void addReturnsExpectedPatient() throws Exception {
-        Patient samplePatient1 = new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
-        Patient samplePatient2 = new Patient("Bobby", "Johnson", new LocalDate(1975, 7, 3), "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
+        Patient samplePatient1 = new Patient("Joe", "Dirt", "1/2/1955", "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", "5/20/1988", "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
     	
     	Mockito.when(this.patientRepository.save(Mockito.isA(Patient.class))).thenReturn(samplePatient2);
     	
@@ -102,8 +102,8 @@ public class PatientServiceTests {
     /** Tests that addMultiple returns the expected patients, shows they are saved correctly */
     @Test
     public void addMultipleReturnsExpectedPatients() throws Exception{
-        Patient samplePatient1 = new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
-        Patient samplePatient2 = new Patient("Bobby", "Johnson", new LocalDate(1975, 7, 3), "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
+        Patient samplePatient1 = new Patient("Joe", "Dirt", "1/2/1955", "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", "5/20/1988", "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
         Patient[] samplePatientArray1 = new Patient[1];
         Patient[] samplePatientArray2= new Patient[1];
         samplePatientArray1[0] = samplePatient1;
@@ -131,7 +131,7 @@ public class PatientServiceTests {
     /** Tests that read returns the intended patient */
     @Test
     public void readReturnsExpectedPatient() throws Exception{
-        Patient samplePatient2 = new Patient("Bobby", "Johnson",new LocalDate(1975, 7, 3),"Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson","5/20/1988","Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
         
         Mockito.when(this.patientRepository.findOne(1L)).thenReturn(samplePatient2);
         
@@ -155,8 +155,8 @@ public class PatientServiceTests {
     /** Tests that readAll returns the expected list of patients from the patient Repository */
     @Test
     public void readAllReturnsExpectedPatients() throws Exception{
-        Patient samplePatient1 = new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
-        Patient samplePatient2 = new Patient("Bobby", "Johnson", new LocalDate(1975, 7, 3), "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
+        Patient samplePatient1 = new Patient("Joe", "Dirt", "1/2/1955", "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", "5/20/1988", "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
         List<Patient> samplePatientList = new ArrayList<Patient>();
         samplePatientList.add(samplePatient1);
         samplePatientList.add(samplePatient2);
@@ -190,7 +190,7 @@ public class PatientServiceTests {
     
     @Test
     public void editDiagnosisCallsPatientRepositorySave() throws Exception{
-        Patient samplePatient1 = new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient1 = new Patient("Joe", "Dirt", "1/2/1955", "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
         
         ArgumentCaptor<Patient> patientCaptor = ArgumentCaptor.forClass(Patient.class);
         List<Patient> capturedPatients;
@@ -211,8 +211,8 @@ public class PatientServiceTests {
     
     @Test
     public void editDiagnosisReturnsExpectedValue() throws Exception{
-        Patient samplePatient1 = new Patient("Joe", "Dirt", new LocalDate(1970, 5, 20), "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
-        Patient samplePatient2 = new Patient("Bobby", "Johnson", new LocalDate(1975, 7, 3), "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
+        Patient samplePatient1 = new Patient("Joe", "Dirt", "1/2/1955", "Address1", "ABC123DEF", "5555555555", "Provider", "DEF123ABC");
+        Patient samplePatient2 = new Patient("Bobby", "Johnson", "5/20/1988", "Address2","963JKL852", "7777777777", "Aetna", "WER456YTG");
         
         Mockito.when(this.patientRepository.save(Mockito.isA(Patient.class))).thenReturn(samplePatient2);
         

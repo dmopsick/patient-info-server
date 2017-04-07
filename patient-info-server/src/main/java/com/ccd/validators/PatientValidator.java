@@ -19,7 +19,8 @@ public class PatientValidator implements Validator {
         Patient patient = (Patient) target;
         
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "givenName", "givenName.empty", "A given name is required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "familyName", "familyName.empty", "A family name is required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "familyName", "familyName.empty", "A family name is  required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "birthDate", "birthDate.empty", "A birth date is required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "address.empty", "An adddress is required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "diagnosis", "diagnosis.empty", "A diagnosis code required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phoneNumber", "phoneNumber.empty", "A phone number required");
