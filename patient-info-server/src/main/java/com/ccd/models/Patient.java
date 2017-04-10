@@ -25,8 +25,9 @@ public class Patient {
 	@NotNull
 	@Size(max = 35)
 	private String familyName;
-	// @NotNull
-	private LocalDate birthDate;
+	@JsonIgnore
+	private LocalDate birthDateObject;
+	private String birthDate;
 	@NotNull
     private String address;
 	@NotNull
@@ -45,10 +46,11 @@ public class Patient {
 	
 	private Patient(){};
 	
-	public Patient(String givenName, String familyName, String birthDateString, String address, String diagnosis, String phoneNumber, String insuranceProvider, String insuranceId){
+	public Patient(String givenName, String familyName, String birthDate, String address, String diagnosis, String phoneNumber, String insuranceProvider, String insuranceId){
 		this.givenName = givenName;
 		this.familyName = familyName;
-		this.birthDate = parseBirthDate(birthDateString);
+		this.birthDate = birthDate;
+		this.birthDateObject = parsebirthDateObject(birthDate);
 		this.address = address;
 		this.diagnosis = diagnosis;
 		this.phoneNumber = phoneNumber;
@@ -59,15 +61,15 @@ public class Patient {
 	private static final Logger logger = Logger.getLogger(Patient.class);
 	/** Take in a string of the birth date in mm/dd/yyyy format and 
 	 * convert it into a joda.LocalDate object */
-	public LocalDate parseBirthDate(String birthDate){
-		// Locate the index of the slashes
-		int slashIndex1 = birthDate.indexOf("/");
-		int slashIndex2 = birthDate.indexOf("/", slashIndex1 + 1);
+	public LocalDate parsebirthDateObject(String birthDateObject){
+		// Locate the index of the dashes
+		int dashIndex1 = birthDateObject.indexOf("-");
+		int dashIndex2 = birthDateObject.indexOf("-", dashIndex1 + 1);
 		
 		// Create substrings of month, day, and year
-		String monthString = birthDate.substring(0, slashIndex1);
-		String dayString = birthDate.substring(slashIndex1 + 1, slashIndex2);
-		String yearString = birthDate.substring(slashIndex2 + 1);		
+		String monthString = birthDateObject.substring(0, dashIndex1);
+		String dayString = birthDateObject.substring(dashIndex1 + 1, dashIndex2);
+		String yearString = birthDateObject.substring(dashIndex2 + 1);		
 		
 		// Parse month, day, and year as integers
 		int month = Integer.parseInt(monthString);
@@ -75,9 +77,9 @@ public class Patient {
 		int year = Integer.parseInt(yearString);
 		
 		// Create a joda.LocalDate Object
-		LocalDate birthdateObject = new LocalDate(year, month, day);
-		// logger.info("FLAG: " + birthdateObject.toString());
-		return birthdateObject;
+		LocalDate birthDateObjectObject = new LocalDate(year, month, day);
+		// logger.info("FLAG: " + birthDateObjectObject.toString());
+		return birthDateObjectObject;
 	}
 	// Getter and setter methods to access and modify variables
 	public long getId(){
@@ -100,22 +102,20 @@ public class Patient {
     }
 	
 	@JsonIgnore
-	public LocalDate getBirthDate(){
-	    return birthDate;
+	public LocalDate getbirthDateObject(){
+	    return birthDateObject;
 	}
-	
 	
 	/** Display birthday in mm/dd/yyyy format */
-	public String getSimpleBirthdate(){
-	    return birthDate.getMonthOfYear() + "/" + birthDate.getDayOfMonth() + "/"
-	    		+ birthDate.getYear();
+	public String getBirthDate(){
+		return birthDate;
 	}
 	
-	
+	@JsonIgnore
 	/** Return the age of the patient */
 	public int getAge(){
 	    LocalDate now = new LocalDate();
-	    Years age = Years.yearsBetween(birthDate, now);
+	    Years age = Years.yearsBetween(birthDateObject, now);
 	    return age.getYears();
 	}
 	
@@ -151,6 +151,14 @@ public class Patient {
 	/** Setter method for family name variable */
 	public void setFamilyName(String familyName){
 	    this.familyName = familyName;
+	}
+	
+	public void setBirthDate(String birthDate){
+		this.birthDate = birthDate;
+	}
+	
+	public void setBirthDateObject(LocalDate birthDateObject){
+		this.birthDateObject = birthDateObject;
 	}
 	
 	public void setAddress(String address){

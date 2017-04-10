@@ -1,0 +1,11 @@
+[06-Apr-2017 22:03:06 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/ubuntu/workspace/src/app/pages/form.php on line 19
+[06-Apr-2017 22:07:55 UTC] PHP Fatal error:  Call to undefined function insertCountryList() in /home/ubuntu/workspace/src/app/pages/form.php on line 25
+[06-Apr-2017 22:07:55 UTC] PHP Stack trace:
+[06-Apr-2017 22:07:55 UTC] PHP   1. {main}() /home/ubuntu/workspace/src/app/pages/form.php:0
+[06-Apr-2017 22:21:42 UTC] PHP Warning:  require(..</p>hp/form_helper.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/src/app/pages/form.php on line 2
+[06-Apr-2017 22:21:42 UTC] PHP Stack trace:
+[06-Apr-2017 22:21:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/src/app/pages/form.php:0
+[06-Apr-2017 22:21:42 UTC] PHP Fatal error:  require(): Failed opening required '..</p>hp/form_helper.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/src/app/pages/form.php on line 2
+[06-Apr-2017 22:21:42 UTC] PHP Stack trace:
+[06-Apr-2017 22:21:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/src/app/pages/form.php:0
+[09-Apr-2017 17:30:57 UTC] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')' in /home/ubuntu/workspace/src/app/pages/submission.php on line 43

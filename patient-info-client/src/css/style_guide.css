@@ -1,0 +1,15 @@
+.formItem {
+    text-align: left;
+}
+.myHeader{
+    text-align: center;
+}
+.navButton{
+    display: block;
+    margin: 0 auto;
+}
+/* This class is my attempt to center the submit button on my laptop browser */
+.submitButton{
+    display: block;
+    margin-left: 6em;
+}

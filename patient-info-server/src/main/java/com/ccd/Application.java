@@ -17,10 +17,9 @@ public class Application {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                // We'll always run our apps from localhost:3000 (which is an alias for 127.0.0.1:3000)
                 registry.addMapping("/**")
                         .allowedMethods("DELETE", "GET", "POST", "PUT")
-                        .allowedOrigins("chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop", "http://127.0.0.1:8080", "http://localhost:8080");
+                        .allowedOrigins("chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop", "http://127.0.0.1:8080", "http://localhost:8080", "*");
             }
         };
     }

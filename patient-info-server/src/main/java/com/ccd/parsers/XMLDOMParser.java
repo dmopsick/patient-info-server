@@ -135,7 +135,7 @@ public class XMLDOMParser {
         String yearString = birthDateElement.getElementsByTagName("year").item(0).getTextContent();
 
         // Combine the day, month, and year into a single string in mm/dd/yyyy format
-        String birthDate = monthString + "/" + dayString + "/" + yearString; 
+        String birthDate = monthString + "-" + dayString + "-" + yearString; 
         
         return birthDate;
     }
