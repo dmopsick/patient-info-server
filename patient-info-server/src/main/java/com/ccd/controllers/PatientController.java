@@ -102,14 +102,9 @@ public class PatientController {
 		// Obtain the list of patients in the repository
 		List<Patient> returnedPatientList = this.patientService.readAll();
 		
-		// logger.info("Flag" + returnedPatientList.get(0).getName());
-		if(returnedPatientList == null){
+		if (returnedPatientList.size() == 0){
 			responseStatus = HttpStatus.NOT_FOUND;
-			logger.info("FLAG - NOT FOUND");
-		}
-		else if(returnedPatientList.size() == 0){
-			responseStatus = HttpStatus.NOT_FOUND;
-			logger.info("FLAG - NOT FOUND");
+			logger.info("FLAG - NOT FOUND - SIZE == 0");
 		}
 		else{
 			responseStatus = HttpStatus.OK;
@@ -119,6 +114,28 @@ public class PatientController {
 		return new ResponseEntity<List<Patient>>(returnedPatientList, responseStatus);
 	}
 	
+	/** Handles the request to return a list of all patients with a given family name */
+	@RequestMapping(method = RequestMethod.GET, value = "/searchFamily/{familyName}")
+	ResponseEntity<List<Patient>> readPatientByFamilyName(@PathVariable String familyName){
+	    // Initialize the HTTP status to be returned
+	    HttpStatus responseStatus;
+	    
+	    // Obtain the list of patients in the repository
+	    List<Patient> returnedPatientList = this.patientService.readByFamilyName(familyName);
+	    
+	    if(returnedPatientList.size() == 0){
+	        responseStatus = HttpStatus.NOT_FOUND;
+	    }
+	    else{
+	        responseStatus = HttpStatus.OK;
+	    }
+	    
+	    // Return the list of patients with the specified family name and the appropriate HTTP status
+	    return new ResponseEntity<List<Patient>>(returnedPatientList, responseStatus);
+	}
+	
+	/** Handles the requests to delete a specific patient out of the database based on a 
+	 * a specific patient id passed to the controller */
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{patientId}")
 	ResponseEntity<HttpStatus> deletePatient(@PathVariable Long patientId){
 	    HttpStatus responseStatus;

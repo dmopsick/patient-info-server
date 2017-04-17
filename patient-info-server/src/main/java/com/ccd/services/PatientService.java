@@ -24,12 +24,12 @@ public class PatientService {
         logger.info("Flag - autowired constructor called.");
     	this.patientRepository = patientRepository;
         this.parserService = parserService;
-        addPatientFromFile("PatientList1.xml");
+        // addPatientFromFile("PatientList1.xml");
     }
     
     /** This constructor is for testing services to avoid calling addPatientFromFile
      * I do not want to add items in the database when testing the application */
-    public PatientService(PatientRepository patientRepository, ParserService parserService, Boolean live) {
+    public PatientService(PatientRepository patientRepository, ParserService parserService, Boolean tests) {
         logger.info("Flag - testing constructor being called");
     	this.patientRepository = patientRepository;
         this.parserService = parserService;
@@ -80,6 +80,11 @@ public class PatientService {
     public List<Patient> readAll() {
         // logger.info("FLAG - readAll() was called");
         return this.patientRepository.findAll();
+    }
+    
+    /** Returns a list of all patients with the passed family name */
+    public List<Patient> readByFamilyName(String familyName){
+        return this.patientRepository.findByFamilyName(familyName);
     }
     
     /** Deletes the patient with the given id from the repository */
