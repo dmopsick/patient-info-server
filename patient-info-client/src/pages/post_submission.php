@@ -50,6 +50,9 @@
 
     $result = curl_exec($ch);
     $info = curl_getinfo($ch);
+
+    // Close the current connection to save server resources
+    curl_close();
     // echo "result dump: " . var_dump($result) . "<br><br><br>";
     // echo "FLAG: " . print_r($info);
 
@@ -95,7 +98,7 @@
         </html>";
     }
     else if($info['http_code'] === 0){
-        echo "              <h1 class = 'myHeader'>Error: It looks like the backend server is down.</h1>
+        echo "              <h1 class = 'myHeader'>Error: There appears to be an issue with the backend server.</h1>
                         </div>
                         <div class = 'col-md-4'></div>
                         <div class = 'col-md-5'>

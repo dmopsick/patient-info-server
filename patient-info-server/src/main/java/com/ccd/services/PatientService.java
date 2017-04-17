@@ -24,7 +24,7 @@ public class PatientService {
         logger.info("Flag - autowired constructor called.");
     	this.patientRepository = patientRepository;
         this.parserService = parserService;
-        // addPatientFromFile("PatientList1.xml");
+        addPatientFromFile("PatientList1.xml");
     }
     
     /** This constructor is for testing services to avoid calling addPatientFromFile
