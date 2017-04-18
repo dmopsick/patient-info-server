@@ -52,7 +52,7 @@
     $info = curl_getinfo($ch);
 
     // Close the current connection to save server resources
-    curl_close();
+    curl_close($ch);
     // echo "result dump: " . var_dump($result) . "<br><br><br>";
     // echo "FLAG: " . print_r($info);
 
@@ -94,11 +94,11 @@
                   </div>
               </div>
           </body>
-            </body>
+            <footer id = 'footer'></footer>
         </html>";
     }
     else if($info['http_code'] === 0){
-        echo "              <h1 class = 'myHeader'>Error: There appears to be an issue with the backend server.</h1>
+        echo "<h1 class = 'myHeader'>Error: There appears to be an issue with the backend server.</h1>
                         </div>
                         <div class = 'col-md-4'></div>
                         <div class = 'col-md-5'>
@@ -111,6 +111,7 @@
                     </div>
                 </div>
             </body>
+            <footer id = 'footer'></footer>
         </html>";
     }
 

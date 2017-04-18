@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<patientList>
+   <patient id="001">
+	  <givenName>William</givenName>
+	  <familyName>Maxwell</familyName>
+	  <birthDate>
+	    <day>15</day>
+		<month>6</month>
+		<year>1986</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>1738 Cactus Ave.</streetAddress>
+		<city>Patterson</city>
+		<state>NJ</state>
+		<postalCode>07501</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>5555555555</phonenumber>
+	  <insuranceProvider>BlueCrossBlueShield</insuranceProvider>
+      <insuranceId>ABC123DEF</insuranceId>
+   </patient>
+	<patient id="002">
+	  <givenName>Robert</givenName>
+	  <familyName>Johnson</familyName>
+	  <birthDate>
+	    <day>22</day>
+		<month>3</month>
+		<year>1964</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>8785 Windfall St.</streetAddress>
+		<city>Whitehall</city>
+		<state>PA</state>
+		<postalCode>18052</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>1234567891</phonenumber>
+	  <insuranceProvider>Aetna</insuranceProvider>
+      <insuranceId>5LOP8524P</insuranceId>
+   </patient>
+   	<patient id="103">
+	  <givenName>Janice</givenName>
+	  <familyName>Bumble</familyName>
+	  <birthDate>
+	    <day>25</day>
+		<month>11</month>
+		<year>1977</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>711 Old York Drive</streetAddress>
+		<city>Richmond</city>
+		<state>VA</state>
+		<postalCode>23223</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>6877894554</phonenumber>
+	  <insuranceProvider>Humana</insuranceProvider>
+      <insuranceId>JU5P69OOL</insuranceId>
+   </patient>
+   	<patient id="004">
+	  <givenName>Laura</givenName>
+	  <familyName>Floogle</familyName>
+	  <birthDate>
+	    <day>8</day>
+		<month>4</month>
+		<year>1994</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>787 Lakeview St.</streetAddress>
+		<city>Marion</city>
+		<state>NC</state>
+		<postalCode>28752</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>4566548778</phonenumber>
+	  <insuranceProvider>KaiserPermanente</insuranceProvider>
+      <insuranceId>85NMASDG7</insuranceId>
+   </patient>
+   <patient id="001">
+	  <givenName>William</givenName>
+	  <familyName>Maxwell</familyName>
+	  <birthDate>
+	    <day>15</day>
+		<month>6</month>
+		<year>1986</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>1738 Cactus Ave.</streetAddress>
+		<city>Patterson</city>
+		<state>NJ</state>
+		<postalCode>07501</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>5555555555</phonenumber>
+	  <insuranceProvider>BlueCrossBlueShield</insuranceProvider>
+      <insuranceId>ABC123DEF</insuranceId>
+   </patient>
+	<patient id="002">
+	  <givenName>Robert</givenName>
+	  <familyName>Johnson</familyName>
+	  <birthDate>
+	    <day>22</day>
+		<month>3</month>
+		<year>1964</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>8785 Windfall St.</streetAddress>
+		<city>Whitehall</city>
+		<state>PA</state>
+		<postalCode>18052</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>1234567891</phonenumber>
+	  <insuranceProvider>Aetna</insuranceProvider>
+      <insuranceId>5LOP8524P</insuranceId>
+   </patient>
+   	<patient id="103">
+	  <givenName>Janice</givenName>
+	  <familyName>Bumble</familyName>
+	  <birthDate>
+	    <day>25</day>
+		<month>11</month>
+		<year>1977</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>711 Old York Drive</streetAddress>
+		<city>Richmond</city>
+		<state>VA</state>
+		<postalCode>23223</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>6877894554</phonenumber>
+	  <insuranceProvider>Humana</insuranceProvider>
+      <insuranceId>JU5P69OOL</insuranceId>
+   </patient>
+   	<patient id="004">
+	  <givenName>Laura</givenName>
+	  <familyName>Floogle</familyName>
+	  <birthDate>
+	    <day>8</day>
+		<month>4</month>
+		<year>1994</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>787 Lakeview St.</streetAddress>
+		<city>Marion</city>
+		<state>NC</state>
+		<postalCode>28752</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>4566548778</phonenumber>
+	  <insuranceProvider>KaiserPermanente</insuranceProvider>
+      <insuranceId>85NMASDG7</insuranceId>
+   </patient>
+   <patient id="001">
+	  <givenName>William</givenName>
+	  <familyName>Maxwell</familyName>
+	  <birthDate>
+	    <day>15</day>
+		<month>6</month>
+		<year>1986</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>1738 Cactus Ave.</streetAddress>
+		<city>Patterson</city>
+		<state>NJ</state>
+		<postalCode>07501</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>5555555555</phonenumber>
+	  <insuranceProvider>BlueCrossBlueShield</insuranceProvider>
+      <insuranceId>ABC123DEF</insuranceId>
+   </patient>
+	<patient id="002">
+	  <givenName>Robert</givenName>
+	  <familyName>Johnson</familyName>
+	  <birthDate>
+	    <day>22</day>
+		<month>3</month>
+		<year>1964</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>8785 Windfall St.</streetAddress>
+		<city>Whitehall</city>
+		<state>PA</state>
+		<postalCode>18052</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>1234567891</phonenumber>
+	  <insuranceProvider>Aetna</insuranceProvider>
+      <insuranceId>5LOP8524P</insuranceId>
+   </patient>
+   	<patient id="103">
+	  <givenName>Janice</givenName>
+	  <familyName>Bumble</familyName>
+	  <birthDate>
+	    <day>25</day>
+		<month>11</month>
+		<year>1977</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>711 Old York Drive</streetAddress>
+		<city>Richmond</city>
+		<state>VA</state>
+		<postalCode>23223</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>6877894554</phonenumber>
+	  <insuranceProvider>Humana</insuranceProvider>
+      <insuranceId>JU5P69OOL</insuranceId>
+   </patient>
+   	<patient id="004">
+	  <givenName>Laura</givenName>
+	  <familyName>Floogle</familyName>
+	  <birthDate>
+	    <day>8</day>
+		<month>4</month>
+		<year>1994</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>787 Lakeview St.</streetAddress>
+		<city>Marion</city>
+		<state>NC</state>
+		<postalCode>28752</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>4566548778</phonenumber>
+	  <insuranceProvider>KaiserPermanente</insuranceProvider>
+      <insuranceId>85NMASDG7</insuranceId>
+   </patient>
+   <patient id="001">
+	  <givenName>William</givenName>
+	  <familyName>Maxwell</familyName>
+	  <birthDate>
+	    <day>15</day>
+		<month>6</month>
+		<year>1986</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>1738 Cactus Ave.</streetAddress>
+		<city>Patterson</city>
+		<state>NJ</state>
+		<postalCode>07501</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>5555555555</phonenumber>
+	  <insuranceProvider>BlueCrossBlueShield</insuranceProvider>
+      <insuranceId>ABC123DEF</insuranceId>
+   </patient>
+	<patient id="002">
+	  <givenName>Robert</givenName>
+	  <familyName>Johnson</familyName>
+	  <birthDate>
+	    <day>22</day>
+		<month>3</month>
+		<year>1964</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>8785 Windfall St.</streetAddress>
+		<city>Whitehall</city>
+		<state>PA</state>
+		<postalCode>18052</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>1234567891</phonenumber>
+	  <insuranceProvider>Aetna</insuranceProvider>
+      <insuranceId>5LOP8524P</insuranceId>
+   </patient>
+   	<patient id="103">
+	  <givenName>Janice</givenName>
+	  <familyName>Bumble</familyName>
+	  <birthDate>
+	    <day>25</day>
+		<month>11</month>
+		<year>1977</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>711 Old York Drive</streetAddress>
+		<city>Richmond</city>
+		<state>VA</state>
+		<postalCode>23223</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>6877894554</phonenumber>
+	  <insuranceProvider>Humana</insuranceProvider>
+      <insuranceId>JU5P69OOL</insuranceId>
+   </patient>
+   	<patient id="004">
+	  <givenName>Laura</givenName>
+	  <familyName>Floogle</familyName>
+	  <birthDate>
+	    <day>8</day>
+		<month>4</month>
+		<year>1994</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>787 Lakeview St.</streetAddress>
+		<city>Marion</city>
+		<state>NC</state>
+		<postalCode>28752</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>4566548778</phonenumber>
+	  <insuranceProvider>KaiserPermanente</insuranceProvider>
+      <insuranceId>85NMASDG7</insuranceId>
+   </patient>
+   <patient id="001">
+	  <givenName>William</givenName>
+	  <familyName>Maxwell</familyName>
+	  <birthDate>
+	    <day>15</day>
+		<month>6</month>
+		<year>1986</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>1738 Cactus Ave.</streetAddress>
+		<city>Patterson</city>
+		<state>NJ</state>
+		<postalCode>07501</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>5555555555</phonenumber>
+	  <insuranceProvider>BlueCrossBlueShield</insuranceProvider>
+      <insuranceId>ABC123DEF</insuranceId>
+   </patient>
+	<patient id="002">
+	  <givenName>Robert</givenName>
+	  <familyName>Johnson</familyName>
+	  <birthDate>
+	    <day>22</day>
+		<month>3</month>
+		<year>1964</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>8785 Windfall St.</streetAddress>
+		<city>Whitehall</city>
+		<state>PA</state>
+		<postalCode>18052</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>1234567891</phonenumber>
+	  <insuranceProvider>Aetna</insuranceProvider>
+      <insuranceId>5LOP8524P</insuranceId>
+   </patient>
+   	<patient id="103">
+	  <givenName>Janice</givenName>
+	  <familyName>Bumble</familyName>
+	  <birthDate>
+	    <day>25</day>
+		<month>11</month>
+		<year>1977</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>711 Old York Drive</streetAddress>
+		<city>Richmond</city>
+		<state>VA</state>
+		<postalCode>23223</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>6877894554</phonenumber>
+	  <insuranceProvider>Humana</insuranceProvider>
+      <insuranceId>JU5P69OOL</insuranceId>
+   </patient>
+   	<patient id="004">
+	  <givenName>Laura</givenName>
+	  <familyName>Floogle</familyName>
+	  <birthDate>
+	    <day>8</day>
+		<month>4</month>
+		<year>1994</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>787 Lakeview St.</streetAddress>
+		<city>Marion</city>
+		<state>NC</state>
+		<postalCode>28752</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>4566548778</phonenumber>
+	  <insuranceProvider>KaiserPermanente</insuranceProvider>
+      <insuranceId>85NMASDG7</insuranceId>
+   </patient>
+   <patient id="001">
+	  <givenName>William</givenName>
+	  <familyName>Maxwell</familyName>
+	  <birthDate>
+	    <day>15</day>
+		<month>6</month>
+		<year>1986</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>1738 Cactus Ave.</streetAddress>
+		<city>Patterson</city>
+		<state>NJ</state>
+		<postalCode>07501</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>5555555555</phonenumber>
+	  <insuranceProvider>BlueCrossBlueShield</insuranceProvider>
+      <insuranceId>ABC123DEF</insuranceId>
+   </patient>
+	<patient id="002">
+	  <givenName>Robert</givenName>
+	  <familyName>Johnson</familyName>
+	  <birthDate>
+	    <day>22</day>
+		<month>3</month>
+		<year>1964</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>8785 Windfall St.</streetAddress>
+		<city>Whitehall</city>
+		<state>PA</state>
+		<postalCode>18052</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>1234567891</phonenumber>
+	  <insuranceProvider>Aetna</insuranceProvider>
+      <insuranceId>5LOP8524P</insuranceId>
+   </patient>
+   	<patient id="103">
+	  <givenName>Janice</givenName>
+	  <familyName>Bumble</familyName>
+	  <birthDate>
+	    <day>25</day>
+		<month>11</month>
+		<year>1977</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>711 Old York Drive</streetAddress>
+		<city>Richmond</city>
+		<state>VA</state>
+		<postalCode>23223</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>6877894554</phonenumber>
+	  <insuranceProvider>Humana</insuranceProvider>
+      <insuranceId>JU5P69OOL</insuranceId>
+   </patient>
+   	<patient id="004">
+	  <givenName>Laura</givenName>
+	  <familyName>Floogle</familyName>
+	  <birthDate>
+	    <day>8</day>
+		<month>4</month>
+		<year>1994</year>
+	  </birthDate>
+	  <address>
+	    <streetAddress>787 Lakeview St.</streetAddress>
+		<city>Marion</city>
+		<state>NC</state>
+		<postalCode>28752</postalCode>
+		<country>US</country>
+	  </address>
+      <diagnosis>123ABC456</diagnosis>
+      <phonenumber>4566548778</phonenumber>
+	  <insuranceProvider>KaiserPermanente</insuranceProvider>
+      <insuranceId>85NMASDG7</insuranceId>
+   </patient>
+</patientList>

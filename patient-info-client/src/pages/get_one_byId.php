@@ -14,7 +14,7 @@
                 <div class = 'col-md-12'>
                     <h2 class = 'myHeader'>";
                     if(!isset($_POST['patientId'])){
-                        echo "Enter a patient Id";
+                        echo "Enter a Patient Id";
                     }
                     else{
                         echo "Requested Patient information";
@@ -24,8 +24,9 @@
                 <div class = 'col-md-4'></div>
                 <div class = 'col-md-5'>";
                 if(!isset($_POST['patientId'])){
-                    echo "<br><form action = 'get_one_id.php' method = 'post'>
-                        <p> Patient Id: <input type = 'input' name = 'patientId' maxLength = '35' required> </p>
+                    echo "<br><form action = 'get_one_byId.php' method = 'post'>
+                        <p class = 'searchLabel'> Patient Id: <input type = 'input' name = 'patientId' maxLength = '10' size = '5' required></p>
+                        <input class = 'submitButton' type = 'submit' value ='Search'>
                     </form>";
                 }
                 else{
@@ -47,8 +48,12 @@
                     $info = curl_getinfo($ch);
                     // echo print_r($info);
 
+                    // Close the connection to the backend server
+                    curl_close($ch);
+
+                    // Handle the response from the backend server
                     if($info['http_code'] == 404){
-                        echo "<h3>No patients in the database with an id of " . $_POST['patientId'] . "</h3>";
+                        echo "<h4>There is no patient with an id of " . $_POST['patientId'] . "</h4>";
                     }
                     else if($info['http_code'] == 200){
                         // Decode the JSON returned from the request into an Array
@@ -74,5 +79,6 @@
                 </div>
               </div>
         </body>
+        <footer id = 'footer'></footer>
     </html>"
  ?>

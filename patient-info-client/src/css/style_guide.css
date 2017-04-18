@@ -8,8 +8,32 @@
     display: block;
     margin: 0 auto;
 }
+.searchLabel{
+    text-align: center;
+    display: block;
+    margin: auto;
+}
 /* This class is my attempt to center the submit button on my laptop browser */
 .submitButton{
     display: block;
     margin-left: 6em;
+}
+
+/* CSS for the sticky footer */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  margin-left: 0;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
 }
